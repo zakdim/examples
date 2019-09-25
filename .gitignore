@@ -2,3 +2,7 @@ out*/
 *.class
 mods*/
 target*/
+.classpath
+.project
+.settings*/
+.vscode/

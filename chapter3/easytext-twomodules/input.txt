@@ -1,0 +1,22 @@
+Initially, our implementation consists of a single module, easytext. With this starting point, there is no
+separation of concerns. There’s just a single package inside a module, which by now we are familiar
+with, as shown in Example 3-2.
+
+Example 3-2. EasyText as single module (➥ chapter3/easytext-singlemodule)
+src
+└── easytext
+    ├── javamodularity
+    │   └── easytext
+    │       └── Main.java
+    └── module-info.java
+
+The module descriptor is an empty one. The Main class reads a file, applies a single readability formula
+(Flesch-Kincaid) and prints the results to the console. After compiling and packaging the module, it works
+like this: 
+
+$ java --module-path mods -m easytext input.txt 
+Reading input.txt 
+Flesh-Kincaid:83.42468299865723
+
+Obviously, the single-module setup ticks none of the boxes as far as our requirements are concerned. It’s
+time to add more modules into the mix.
