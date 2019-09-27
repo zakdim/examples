@@ -50,7 +50,7 @@ public class Main extends Application {
         pane.setRight(vbox);
         pane.setCenter(input);
         pane.setBottom(output);
-        primaryStage.setScene(new Scene(pane, 300, 250));
+        primaryStage.setScene(new Scene(pane, 600, 300));
         primaryStage.show();
     }
 

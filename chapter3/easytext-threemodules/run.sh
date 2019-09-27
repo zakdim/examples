@@ -11,8 +11,8 @@ mkdir -p out
 
 # V2 - # OR use the latest JavaFX 13 SDK and MODS installed locally.
 # Set the following environment variables in ~/.bashrc (~/.bash_profile)
-# export JAVA_FX=/home/ftnc/opt/javafx-sdk/lib
-# export JAVA_FX_MODS=/home/ftnc/opt/javafx-jmods
+# export JAVA_FX=$HOME/opt/javafx-sdk/lib
+# export JAVA_FX_MODS=$HOME/opt/javafx-jmods
 export JAVA_HOME=$JAVA13_HOME
 # Specify path to JavaFX mods as they are not part of Java 13
 $JAVA_HOME/bin/javac --module-path $JAVA_FX_MODS -d out --module-source-path src -m easytext.cli,easytext.gui,easytext.analysis
