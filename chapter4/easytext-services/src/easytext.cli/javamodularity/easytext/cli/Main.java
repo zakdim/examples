@@ -8,7 +8,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ServiceLoader;
+import java.util.ServiceLoader;
+import javamodularity.easytext.analysis.api.Analyzer;
 
+import javamodularity.easytext.analysis.api.Analyzer;
 import javamodularity.easytext.analysis.api.Analyzer;
 
 public class Main {
@@ -26,10 +29,34 @@ public class Main {
       List<List<String>> sentences = toSentences(text);
 
 
-      Iterable<Analyzer> analyzers = ServiceLoader.load(Analyzer.class);
+      // Iterable<Analyzer> analyzers = ServiceLoader.load(Analyzer.class);
 
-      for (Analyzer analyzer: analyzers) { 
-        System.out.println(analyzer.getName() + ": " + analyzer.analyze(sentences));
+      // for (Analyzer analyzer: analyzers) { 
+      //   System.out.println(analyzer.getName() + ": " + analyzer.analyze(sentences));
+      // }
+
+      // Service Life Cycle Example: page 68
+      ServiceLoader<Analyzer> first = ServiceLoader.load(Analyzer.class);
+      System.out.println("Using the first analyzers");
+      for (Analyzer analyzer : first) {
+         System.out.println(analyzer.hashCode());
+      }
+
+      Iterable<Analyzer> second = ServiceLoader.load(Analyzer.class);
+      System.out.println("Using the second analyzers");
+      for (Analyzer analyzer : second) {
+         System.out.println(analyzer.hashCode());
+      }
+
+      System.out.println("Using the first analyzers again, hashCode is the same");
+      for (Analyzer analyzer : first) {
+         System.out.println(analyzer.hashCode());
+      }
+
+      first.reload();
+      System.out.println("Reloading the first analyzers, hashCode is different");
+      for (Analyzer analyzer : first) {
+         System.out.println(analyzer.hashCode());
       }
    }
 
